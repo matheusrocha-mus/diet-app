@@ -1,0 +1,14 @@
+{
+  "name": "dieta-treino",
+  "version": "1.0.0",
+  "description": "",
+  "main": "diet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sortablejs": "^1.15.0"
+  }
+}
