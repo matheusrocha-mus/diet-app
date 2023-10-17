@@ -15,6 +15,8 @@ button:hover, li:hover, a:hover, .card:hover, footer a > img:hover {
     transform: scale(1.1); color: #ffc107;
 }
 
+ul { list-style-type: none; }
+
 nav {
     background-color: black;
     color: white;
@@ -35,6 +37,39 @@ h2 {
 .container-fluid { padding: 0; }
 
 .wrapper { margin: 0 2vw; }
+
+.wrapper, ul.sortable {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+}
+
+.sortable {
+    width: 100%;
+    padding: 0;
+}
+
+ul.sortable {
+    margin: 2vw 0 0 0;
+    padding: 2vw 5vw;
+    border: #ffc107 solid 0.25vw;
+    border-radius: 3%;
+}
+
+ul.sortable :not(:first-child) { margin-top: 2vw; }
+
+ul.sortable > input { background-color: transparent;
+    font-size: xx-large;
+    border: none;
+    color: white;
+    margin-right: auto;
+}
+
+.dropdown-menu-dark :first-child { background-color: black; }
+
+.dropdown-menu-dark hr { margin: 0; padding: 0; }
 
 #author {
     width: 6rem;
