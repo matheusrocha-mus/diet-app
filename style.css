@@ -28,13 +28,13 @@ nav img {
 
 .navbar-brand, .nav-item { margin-left: 2vw }
 
-h2 {
+h1 {
     margin: 2vw;
     padding-bottom: 0.5vw;
     border-bottom: solid white 0.25vw;
 }
 
-.container-fluid { padding: 0; }
+.container-fluid { padding: 0; margin: 0; }
 
 .wrapper { margin: 0 2vw; }
 
@@ -53,23 +53,35 @@ h2 {
 
 ul.sortable {
     margin: 2vw 0 0 0;
-    padding: 2vw 5vw;
+    padding: 2vw;
     border: #ffc107 solid 0.25vw;
     border-radius: 3%;
 }
 
-ul.sortable :not(:first-child) { margin-top: 2vw; }
+ul.sortable > :not(:first-child) { margin-top: 2vw; }
 
-ul.sortable > input { background-color: transparent;
-    font-size: xx-large;
-    border: none;
+input {
+    background-color: transparent;
     color: white;
+    border: none;
+    width: 100%;
+}
+
+ul.sortable > input {
+    display: inline-block;
+    font-size: xx-large;
     margin-right: auto;
 }
 
-.dropdown-menu-dark :first-child { background-color: black; }
+ul.sortable > li, button.dropdown-toggle > div { width: 100%; }
 
-.dropdown-menu-dark hr { margin: 0; padding: 0; }
+.dropdown-menu > a { background-color: black; }
+
+.dropdown-menu hr { margin: 0; padding: 0; }
+
+ul.sortable > li, button.dropdown-toggle, .dropdown-toggle a { transform: scale(1.0); }
+
+h2 { margin-top: 2vw; }
 
 #author {
     width: 6rem;
