@@ -83,6 +83,10 @@ ul.sortable > li, button.dropdown-toggle, .dropdown-toggle a { transform: scale(
 
 h2 { margin-top: 2vw; }
 
+.meals > .container-fluid { color: #ffc107; }
+
+.meals > .container-fluid > .row label { font-size: x-large; }
+
 #author {
     width: 6rem;
     height: 6rem;

@@ -1,0 +1,129 @@
+[
+    {
+        "name": "Egg",
+        "calories": 72,
+        "proteins": 6.3,
+        "carbs": 0.4,
+        "fats": 4.8,
+        "portionType": "1 unit"
+    },
+    {
+        "name": "Banana",
+        "calories": 105,
+        "proteins": 1.3,
+        "carbs": 27,
+        "fats": 0.4,
+        "portionType": "1 unit"
+    },
+    {
+        "name": "Rice",
+        "calories": 130,
+        "proteins": 2.7,
+        "carbs": 28.2,
+        "fats": 0.3,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Beans",
+        "calories": 128,
+        "proteins": 7.5,
+        "carbs": 24.8,
+        "fats": 0.1,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Grilled Chicken",
+        "calories": 144,
+        "proteins": 28,
+        "carbs": 0,
+        "fats": 3.6,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Pork Ribs",
+        "calories": 256,
+        "proteins": 26.81,
+        "carbs": 0,
+        "fats": 15.71,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Pork Loin",
+        "calories": 201,
+        "proteins": 29.86,
+        "carbs": 0,
+        "fats": 8.11,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Linguiça",
+        "calories": 248,
+        "proteins": 18.27,
+        "carbs": 0,
+        "fats": 18.9,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Guava",
+        "calories": 37,
+        "proteins": 1.4,
+        "carbs": 7.88,
+        "fats": 0.52,
+        "portionType": "1 unit"
+    },
+    {
+        "name": "Oat",
+        "calories": 389,
+        "proteins": 16.89,
+        "carbs": 66.27,
+        "fats": 6.9,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Peanut Butter",
+        "calories": 588,
+        "proteins": 25.09,
+        "carbs": 19.56,
+        "fats": 50.39,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Raisins",
+        "calories": 299,
+        "proteins": 3.07,
+        "carbs": 79.18,
+        "fats": 0.46,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Whole Milk",
+        "calories": 60,
+        "proteins": 3.22,
+        "carbs": 4.52,
+        "fats": 3.25,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Semi-Skimmed Milk",
+        "calories": 0,
+        "carbs": 0,
+        "fats": 0,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Skimmed Milk",
+        "calories": 0,
+        "proteins": 0,
+        "carbs": 0,
+        "fats": 0,
+        "portionType": "100 g"
+    },
+    {
+        "name": "Soy Milk",
+        "calories": 54,
+        "proteins": 3.27,
+        "carbs": 6.28,
+        "fats": 1.75,
+        "portionType": "100 g"
+    }
+]
