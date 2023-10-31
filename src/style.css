@@ -36,6 +36,8 @@ h1 {
     border-bottom: solid white 0.25vw;
 }
 
+
+
 .container-fluid { padding: 0; margin: 0; }
 
 .wrapper { margin: 0 2vw; }
@@ -70,9 +72,9 @@ ul.meal > input {
     margin-right: auto;
 }
 
-ul.meal > li, #food-options-dropdown > button.dropdown-toggle, #food-options-dropdown, #dropdownMenuButton1, #create-new-food, #meals-container { width: 100%; }
+#meals-container, button.dropdown-toggle, #food-options-dropdown, #create-new-food, #new-food-portion  { width: 100%; }
 
-ul.meal > li, #food-options-dropdown > button.dropdown-toggle { transform: scale(1.0); }
+ul.meal > li, button.dropdown-toggle { transform: scale(1.0); }
 
 h2 { margin-top: 2vw; }
 
@@ -80,11 +82,11 @@ h2 { margin-top: 2vw; }
 
 .meals > .container-fluid > .row label { font-size: x-large; }
 
-a.dropdown-item { font-size: 0.75rem; }
+food-options-dropdown a.dropdown-item { font-size: 0.75rem; }
 
 .food-item:hover  { color: black; }
 
-#form-inputs input :not(:last-child) {
+#form-inputs input {
     border: 0.1vw solid grey;
     border-radius: 0.75vw;
     color: black;
@@ -93,6 +95,8 @@ a.dropdown-item { font-size: 0.75rem; }
 input:invalid { outline-color: red; }
 
 .invalid { border: 0.1vw solid red; }
+
+
 
 #author {
     width: 6rem;
@@ -122,6 +126,6 @@ input:invalid { outline-color: red; }
 }
 
 @media screen and (max-width: 767px) {
-    #form-inputs input { margin-bottom: 1.5vw; }
+    #form-inputs input, #form-inputs div.dropdown { margin-bottom: 1.5vw; }
     #form-buttons .row { justify-content: space-between; }
 }

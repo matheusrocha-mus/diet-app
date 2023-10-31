@@ -88,15 +88,15 @@
                                     <label class="col-4 col-sm-3 col-md-2 col-xl-1" for="new-food-fats">Fats: </label>
                                     <input class="col-8 col-sm-9 col-md-2 col-xl-3" required type="text" id="new-food-fats" placeholder="Enter fats (in grams)">
                                     <label class="col-4 col-sm-3 col-md-2 col-xl-1" for="new-food-portion">Portion: </label>
-                                    <input class="col-8 col-sm-9 col-md-2 col-xl-3 dropdown" required id="food-portion-dropdown">
+                                    <div class="col-8 col-sm-9 col-md-2 col-xl-3 dropdown" required id="food-portion-dropdown">
                                         <button class="btn dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">Select portion type
-                                            <select class="dropdown-menu dropdown-menu-dark" name="new-food-portion" id="new-food-portion" aria-labelledby="dropdownMenuButton2">
-                                                <option class="dropdown-item" disabled>Select portion type</option>
-                                                <option class="dropdown-item" value="1 unit">1 unit</option>
-                                                <option class="dropdown-item" value="100 g">100 g</option>
-                                            </select>
+                                            <div class="dropdown-menu dropdown-menu-dark" name="new-food-portion" id="new-food-portion" aria-labelledby="dropdownMenuButton2">
+                                                <!--option class="dropdown-item" disabled>Select portion type</option>-->
+                                                <a class="dropdown-item" value="1 unit">1 unit</a>
+                                                <a class="dropdown-item" value="100 g">100 g</a>
+                                            </div>
                                         </button>
-                                    </input>
+                                    </div>
                                 </div>
                             </div>
                         </div>

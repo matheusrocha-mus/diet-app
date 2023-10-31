@@ -19,6 +19,8 @@ function saveDataToLocalStorage(data) {
 
 let foodItems = [];
 
+ // Requeijão: 260, 8, 3.33, 24
+
 fetch('foodData.json')
     .then((response) => response.json())
     .then((data) => {
@@ -137,18 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     foodItem.appendChild(document.getElementById("new-food"));
                     document.getElementById("new-food").classList.remove("d-none");
                     document.getElementById("food-item-row").classList.add("d-none");
-
-                    /*const form = document.querySelector("form");
-                    form.addEventListener("submit", (event) => {
-                        const inputs = form.querySelectorAll("input");
-                        
-                        for (const input of inputs) {
-                            if (input.value === "") {
-                                input.classList.add("invalid");
-                                event.preventDefault();
-                            }
-                        }
-                    });*/
 
                     const cancelButton = document.getElementById("cancel-form-button");
                     cancelButton.addEventListener("click", () => {
