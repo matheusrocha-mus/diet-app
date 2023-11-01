@@ -51,11 +51,16 @@
 
         <h1 class="m-4">My diet</h1>
         <section id="meals" class="mx-4">
-            <button id="create-meal" class="btn">
-                <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 -960 960 960" width="50">
-                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
-                </svg>Create meal
-            </button>
+            <div id="create-meal">
+                <button id="create-meal-button" class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 -960 960 960" width="50">
+                        <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+                    </svg>
+                </button>
+                <div class="bg-black p-1 fs-5"> 
+                    <span>Create meal</span> 
+                </div>
+            </div>
             <ul id="meals-list" class="list-group sortable">
                 <!--Generated meals will be appended here-->
             </ul>

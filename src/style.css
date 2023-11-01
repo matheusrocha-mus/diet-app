@@ -37,6 +37,59 @@ h1 {
 
 
 
+#create-meal {
+    position: fixed;
+    z-index: 2;
+    bottom: 15%;
+    margin: 0 auto;
+}
+#create-meal-button {
+    background-color: #ffc107;
+    border-radius: 100%;
+    transition: 0.3s;
+}
+#create-meal-button:hover {
+    transform: scale(1.2);
+    background-color: black;
+    border: solid 0.1vw #ffc107;
+}
+
+#create-meal-button + div {
+    border: solid 0.1vw #ffc107;
+    color:#ffc107;
+}
+
+#create-meal span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slide 6s infinite;
+}
+
+#create-meal-button > svg { width: 50px; }
+#create-meal-button > svg:hover { fill:#ffc107; }
+
+/*@keyframes slide{ 
+    0%{margin-left:-800px;} 
+    20%{margin-left:-800px;} 
+    35%{margin-left:0px;} 
+    100%{margin-left:0px;} 
+}*/
+
+#create-meal-button:hover span {
+  animation-play-state: running;
+}
+
+#create-meal-button, #create-meal-button + div {
+    display: inline-block; 
+    overflow: hidden;
+    white-space: nowrap; 
+}
+
+
+
+
+
 .meal {
     margin-top: 2vw;
     padding: 2vw;
@@ -66,23 +119,6 @@ h2 { margin-top: 2vw; }
 .meals > .container-fluid { color: #ffc107; }
 
 .meals > .container-fluid > .row label { font-size: x-large; }
-
-#create-meal {
-    position: fixed;
-    z-index: 2;
-    bottom: 20%;
-    margin: 0 auto;
-    background-color: #ffc107;
-    border-radius: 100%;
-    transition: 0.3s;
-}
-#create-meal:hover {
-    transform: scale(1.2);
-    background-color: black;
-}
-
-#create-meal > svg { width: 50px; }
-#create-meal > svg:hover { fill:#ffc107; }
 
 food-options-dropdown a.dropdown-item { font-size: 0.75rem; }
 

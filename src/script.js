@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mealsList = document.getElementById("meals-list");
     let uniqueIdCounter = 0;
 
-    document.getElementById("create-meal").addEventListener("click", () => {
+    document.getElementById("create-meal-button").addEventListener("click", () => {
         createMeal(mealsList, uniqueIdCounter);
         uniqueIdCounter++;
     });
