@@ -33,63 +33,6 @@ h1 {
     align-items: center;
 }
 
-
-
-
-
-#create-meal {
-    position: fixed;
-    z-index: 2;
-    bottom: 15%;
-    margin: 0 auto;
-}
-#create-meal-button {
-    background-color: #ffc107;
-    border-radius: 100%;
-    transition: 0.3s;
-}
-#create-meal-button:hover {
-    transform: scale(1.2);
-    background-color: black;
-    border: solid 0.1vw #ffc107;
-}
-
-#create-meal-button + div {
-    border: solid 0.1vw #ffc107;
-    color:#ffc107;
-}
-
-#create-meal span {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  animation: slide 6s infinite;
-}
-
-#create-meal-button > svg { width: 50px; }
-#create-meal-button > svg:hover { fill:#ffc107; }
-
-/*@keyframes slide{ 
-    0%{margin-left:-800px;} 
-    20%{margin-left:-800px;} 
-    35%{margin-left:0px;} 
-    100%{margin-left:0px;} 
-}*/
-
-#create-meal-button:hover span {
-  animation-play-state: running;
-}
-
-#create-meal-button, #create-meal-button + div {
-    display: inline-block; 
-    overflow: hidden;
-    white-space: nowrap; 
-}
-
-
-
-
-
 .meal {
     margin-top: 2vw;
     padding: 2vw;
@@ -98,6 +41,65 @@ h1 {
 }
 
 .meal > :not(:first-child) { margin-top: 2vw; }
+
+
+
+
+
+#create-meal-button {
+    background-color: #ffc107;
+    border-radius: 100%;
+    transition: 0.3s;
+    display:inline-block; 
+    position: relative;
+}
+#create-meal-button:hover {
+    transform: scale(1.2);
+    background-color: black;
+    border: solid 0.1vw #ffc107;
+}
+#create-meal-button > svg { width: 50px; }
+#create-meal-button > svg:hover { fill:#ffc107; }
+
+#create-meal {
+    position: fixed;
+    z-index: 2;
+    bottom: 15%;
+    margin: 0 auto;
+    text-align: center;
+    text-align: center;
+}
+
+#create-meal > div {
+    display: inline-block; 
+}
+
+#create-meal-tooltip {
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    direction: ltr;
+    color: rgba(255,255,255,0);
+    transition: .5s;
+    transform: translateX(-20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(0%);
+    opacity:0;
+}
+
+#create-meal-button:hover #create-meal-tooltip {
+    color: #ffc107;
+    opacity: 1;
+    background-color: black;
+    border: solid 0.1vw #ffc107;
+    transform: translate(-50%, -50%) translateX(100%);
+}
+
+
+
+
 
 input {
     background-color: transparent;
@@ -112,7 +114,7 @@ input {
     margin-right: auto;
 }
 
-#meals-list, .foods-list, .dropdown-toggle, .food-options-dropdown, .create-new-food, .delete-food, .cancel-new-food, .confirm-new-food  { width: 100%; }
+#meals-list, .foods-list, .dropdown-toggle, .food-options-dropdown, .create-new-food, .delete-food  { width: 100%; }
 
 h2 { margin-top: 2vw; }
 
@@ -125,6 +127,12 @@ food-options-dropdown a.dropdown-item { font-size: 0.75rem; }
 .food-item:hover { color: black; }
 
 .meal-title { color: black; }
+
+
+
+.new-food-form > div { text-align: center; align-items: center; }
+
+.new-food-form label { margin-right: 0.5vw; }
 
 
 
@@ -169,20 +177,16 @@ footer a > img:hover { transform: scale(1.2); }
 
 @media screen and (min-width: 992px) {
     .navbar-brand, .nav-item { transition: 0.3s; }
-
     .navbar-brand:hover, .nav-item:hover, .navbar-nav > li > .active:hover {
         transform: scale(1.2);
         color: #ffc107;
     }
-}
-
-@media screen and (min-width: 768px) {
-    .new-food-form > div > div { margin: 0.25vw 1vw 0 0; }
-    .new-food-form > div > div > :nth-child(n+7) { margin-top: 2vw; }
+    
+    .new-food-form > div > :nth-child(n+4) { margin-top: 1vw; }
     .confirm-new-food { margin-top: 1vw; }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 991px) {
     .new-food-buttons .row { justify-content: space-between; }
     .food-item-row > div, .new-food-form input, .new-food-form select { margin-bottom: 1.5vw; }
 }

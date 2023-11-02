@@ -119,55 +119,51 @@ function createFood (food, uniqueIdCounter) {
     newFood.setAttribute("novalidate", "");
     newFood.innerHTML = `
     <div class="row">
-        <div class="new-food-form col-12 col-md-10">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-4 d-flex">
-                        <label for="new-food-name${uniqueId}">Name: </label>
-                        <input class="form-control new-food-name" required type="text" id="new-food-name${uniqueId}" placeholder="Food name">
-                    </div>
-                    <div class="col-12 col-md-4 d-flex>
-                        <label for="new-food-calories${uniqueId}">Calories: </label>
-                        <input class="form-control new-food-calories" required type="number" id="new-food-calories${uniqueId}" placeholder="Calories (in grams, only numbers)">
-                    </div>
-                    <div class="col-12 col-md-4 d-flex>
-                        <label for="new-food-proteins${uniqueId}">Proteins: </label>
-                        <input class="form-control new-food-proteins" required type="number" id="new-food-proteins${uniqueId}" placeholder="Proteins (in grams, only numbers)">
-                    </div>
-                    <div class="col-12 col-md-4 d-flex>
-                        <label for="new-food-carbs${uniqueId}">Carbs: </label>
-                        <input class="form-control new-food-carbs" required type="number" id="new-food-carbs${uniqueId}" placeholder="Carbs (in grams, only numbers)">
-                    </div>
-                    <div class="col-12 col-md-4 d-flex>
-                        <label for="new-food-fats${uniqueId}">Fats: </label>
-                        <input class="form-control new-food-fats" required type="number" id="new-food-fats${uniqueId}" placeholder="Fats (in grams, only numbers)">
-                    </div>
-                    <div class="col-12 col-md-4 d-flex>
-                        <label for="new-food-portion${uniqueId}">Portion: </label>
-                        <select class="form-select new-food-portion" required id="new-food-portion${uniqueId}">
-                            <option selected disabled>Select portion type</option>
-                            <option value="1 unit">1 unit</option>
-                            <option value="100 g">100 g</option>
-                        </select>
-                    </div>
+        <div class="new-food-form col-12 col-lg-10">
+            <div class="row">
+                <div class="col-12 col-lg-4 d-flex align-items-center">
+                    <label for="new-food-name${uniqueId}">Name:</label>
+                    <input class="form-control new-food-name" required type="text" id="new-food-name${uniqueId}" placeholder="Food name">
+                </div>
+                <div class="col-12 col-lg-4 d-flex align-items-center">
+                    <label for="new-food-calories${uniqueId}">Calories:</label>
+                    <input class="form-control new-food-calories" required type="number" id="new-food-calories${uniqueId}" placeholder="Calories (in grams, only numbers)">
+                </div>
+                <div class="col-12 col-lg-4 d-flex align-items-center">
+                    <label for="new-food-proteins${uniqueId}">Proteins:</label>
+                    <input class="form-control new-food-proteins" required type="number" id="new-food-proteins${uniqueId}" placeholder="Proteins (in grams, only numbers)">
+                </div>
+                <div class="col-12 col-lg-4 d-flex align-items-center">
+                    <label for="new-food-carbs${uniqueId}">Carbs:</label>
+                    <input class="form-control new-food-carbs" required type="number" id="new-food-carbs${uniqueId}" placeholder="Carbs (in grams, only numbers)">
+                </div>
+                <div class="col-12 col-lg-4 d-flex align-items-center">
+                    <label for="new-food-fats${uniqueId}">Fats:</label>
+                    <input class="form-control new-food-fats" required type="number" id="new-food-fats${uniqueId}" placeholder="Fats (in grams, only numbers)">
+                </div>
+                <div class="col-12 col-lg-4 d-flex align-items-center">
+                    <label for="new-food-portion${uniqueId}">Portion:</label>
+                    <select class="form-select new-food-portion" required id="new-food-portion${uniqueId}">
+                        <option selected disabled>Select portion type</option>
+                        <option value="1 unit">1 unit</option>
+                        <option value="100 g">100 g</option>
+                    </select>
                 </div>
             </div>
         </div>
-        <div class="new-food-buttons" class="col-12 col-md-2">
-            <div class="container-fluid">
-                <div class="row">
-                    <button class="cancel-new-food col-5 col-md-12 btn btn-danger" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"></path>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"></path>
-                        </svg> Cancel
-                    </button>
-                    <button class="confirm-new-food col-5 col-md-12 btn btn-success" type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-                        </svg> Create
-                    </button>
-                </div>
+        <div class="new-food-buttons col-12 col-lg-2">
+            <div class="row">
+                <button class="cancel-new-food col-5 col-lg-12 btn btn-danger" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"></path>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"></path>
+                    </svg> Cancel
+                </button>
+                <button class="confirm-new-food col-5 col-lg-12 btn btn-success" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                    </svg> Create
+                </button>
             </div>
         </div>
     </div>
