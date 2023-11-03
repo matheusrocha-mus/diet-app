@@ -132,7 +132,7 @@ function createFood (food, uniqueIdCounter) {
                 <div class="col-12 col-lg-4 d-flex align-items-center">
                     <label for="new-food-portion${uniqueId}">Portion:</label>
                     <select class="form-select new-food-portion" required id="new-food-portion${uniqueId}">
-                        <option selected disabled>Select portion type</option>
+                        <option selected disabled value="">Select portion type</option>
                         <option value="1 unit">1 unit</option>
                         <option value="100 g">100 g</option>
                     </select>
@@ -158,7 +158,7 @@ function createFood (food, uniqueIdCounter) {
     food.appendChild(newFood);
 }
 
-function finishFood (food, uniqueIdCounter) {
+function finishFood (food, uniqueIdCounter, name, calories, proteins, carbs, fats, portion) {
     const uniqueId = `${uniqueIdCounter}`;
     const foodInfo = document.createElement("form");
     foodInfo.className = "food-info container-fluid needs-validation";
@@ -168,23 +168,23 @@ function finishFood (food, uniqueIdCounter) {
         <div class="food-info-display col-12 col-lg-9">
             <div class="row">
                 <div class="col-12 col-lg-8 d-flex align-items-center">
-                    <input class="form-control" disabled type="text">
+                    <input value="${name}" class="form-control" disabled type="text">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label for="food-calories${uniqueId}">Calories:</label>
-                    <input class="form-control" disabled type="number" id="food-calories${uniqueId}">
+                    <input value="${calories}" class="form-control" disabled type="number" id="food-calories${uniqueId}">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label for="food-proteins${uniqueId}">Proteins:</label>
-                    <input class="form-control" disabled type="number" id="food-proteins${uniqueId}">
+                    <input value="${proteins}" class="form-control" disabled type="number" id="food-proteins${uniqueId}">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label for="food-carbs${uniqueId}">Carbs:</label>
-                    <input class="form-control" disabled type="number" id="food-carbs${uniqueId}">
+                    <input value="${carbs}" class="form-control" disabled type="number" id="food-carbs${uniqueId}">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label for="food-fats${uniqueId}">Fats:</label>
-                    <input class="form-control" disabled type="number" id="food-fats${uniqueId}">
+                    <input value="${fats}" class="form-control" disabled type="number" id="food-fats${uniqueId}">
                 </div>
             </div>
         </div>
@@ -192,7 +192,7 @@ function finishFood (food, uniqueIdCounter) {
             <div class="row">
                 <div class="col-7 col-lg-12 d-flex align-items-center">
                     <label for="food-quantity${uniqueId}">Quantity:</label>
-                    <input class="form-control" type="number" id="food-quantity${uniqueId}" placeholder="In grams/units">
+                    <input class="form-control" type="number" id="food-quantity${uniqueId}">
                 </div>
                 <button class="delete-food col-5 col-lg-12 btn btn-danger" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -204,6 +204,14 @@ function finishFood (food, uniqueIdCounter) {
         </div>
     </div>
     `;
+    if (portion == "100 g") {
+        document.getElementById(`food-quantity${uniqueId}`).setAttribute("placeholder", "In grams");
+    }
+
+    else if (portion == "1 unit") {
+        document.getElementById(`food-quantity${uniqueId}`).setAttribute("placeholder", "In units");
+    }
+
     food.appendChild(foodInfo);
 }
 
@@ -241,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             else {
-                createFood (food, uniqueIdCounter)
+                createFood (food, uniqueIdCounter);
                 uniqueIdCounter++;
             }
         }
@@ -254,9 +262,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
                 event.stopPropagation();
 
+                // Retrieve input values
+                const name = newFoodForm.querySelector(".new-food-name").value;
+                const calories = parseFloat(newFoodForm.querySelector(".new-food-calories").value);
+                const proteins = parseFloat(newFoodForm.querySelector(".new-food-proteins").value);
+                const carbs = parseFloat(newFoodForm.querySelector(".new-food-carbs").value);
+                const fats = parseFloat(newFoodForm.querySelector(".new-food-fats").value);
+                const portion = newFoodForm.querySelector(".new-food-portion").value;
+        
+                // Create a new food item object
+                const newFoodItem = {
+                    name,
+                    calories,
+                    proteins,
+                    carbs,
+                    fats,
+                    portion
+                };
+        
+                // Add the new food item to the foodItems array
+                foodItems.push(newFoodItem);
+        
+                // Save the updated foodItems array back to the JSON file
+                saveFoodData();
+
                 // Logic to submit form values of the created food
                 food.querySelector(".new-food").remove();
-                finishFood(food, uniqueIdCounter); // At least 4 more parameters - calories, proteins, carbs and fats
+                finishFood(food, uniqueIdCounter, name, calories, proteins, carbs, fats, portion);
                 // Logic to get the values from the created food
                 uniqueIdCounter++;
 
@@ -270,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
         else if (event.target.classList.contains("dropdown-item")) {
             const food = event.target.closest(".food");
             food.querySelector(".new-food").remove();
-            finishFood(food, uniqueIdCounter); // At least 4 more parameters - calories, proteins, carbs and fats
+            finishFood(food, uniqueIdCounter, name, calories, proteins, carbs, fats, portion);
             // Logic to get the values from the selected food
             uniqueIdCounter++;
         }
@@ -283,3 +315,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+
+function saveFoodData() {
+    fetch('foodData.json', {
+        method: 'PUT', // Use the PUT method to update the JSON file
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(foodItems)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Food data updated successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error updating food data:', error);
+    });
+}
