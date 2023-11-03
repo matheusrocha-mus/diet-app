@@ -40,7 +40,7 @@ h1 {
     border-radius: 3vw;
 }
 
-.meal > :not(:first-child) { margin-top: 2vw; }
+.meal > :not(:first-child), .foods-list > :not(:first-child) { margin-top: 1.5vw; }
 
 
 
@@ -114,7 +114,9 @@ input {
     margin-right: auto;
 }
 
-#meals-list, .foods-list, .dropdown-toggle, .food-options-dropdown, .create-new-food, .delete-food  { width: 100%; }
+#meals-list, .foods-list, .dropdown-toggle, .food-options-dropdown, .create-new-food, .food-item-row .delete-food  { width: 100%; }
+
+.create-new-food > svg, .cancel-new-food > svg { fill: white; }
 
 h2 { margin-top: 2vw; }
 
@@ -128,11 +130,7 @@ food-options-dropdown a.dropdown-item { font-size: 0.75rem; }
 
 .meal-title { color: black; }
 
-
-
-.new-food-form > div { text-align: center; align-items: center; }
-
-.new-food-form label { margin-right: 0.5vw; }
+.new-food-form label, .food-info-display label, .food-info-interactions label { margin-right: 0.5vw; }
 
 
 
@@ -184,9 +182,13 @@ footer a > img:hover { transform: scale(1.2); }
     
     .new-food-form > div > :nth-child(n+4) { margin-top: 1vw; }
     .confirm-new-food { margin-top: 1vw; }
+
+    .food-info-display > div > :nth-child(n+3) { margin-top: 1vw; }
+    .food-info-interactions .delete-food { margin-top: 1vw; }
 }
 
 @media screen and (max-width: 991px) {
     .new-food-buttons .row { justify-content: space-between; }
-    .food-item-row > div, .new-food-form input, .new-food-form select { margin-bottom: 1.5vw; }
+    .food-item-row > div, .new-food-form > div > div, .food-info-display > div > div { margin-bottom: 1.5vw; }
+    .new-food-form > div > div { padding: 0; }
 }
