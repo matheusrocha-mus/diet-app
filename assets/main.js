@@ -1,15 +1,11 @@
-let foodItems = [];
+async function fetchFood() {
+    const response = await fetch('assets/foodData.json');
+    const data = await response.json();
+    return data;
+}
 
- // Requeijão: 260, 8, 3.33, 24
-
-fetch('foodData.json')
-    .then((response) => response.json())
-    .then((data) => {
-        foodItems = data;
-    })
-    .catch((error) => console.error('Error loading food data:', error));
-
-
+let foodItems = fetchFood(); // Requeijão: 260, 8, 3.33, 24
+console.log(foodItems);
 
 function createMeal (mealsList, uniqueIdCounter) {
     const uniqueId = `${uniqueIdCounter}`;
@@ -26,19 +22,19 @@ function createMeal (mealsList, uniqueIdCounter) {
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
                 <label for="meal-calories${uniqueId}">Calories:</label>
-                <input class="meal-calories" type="number" id="meal-calories${uniqueId}" disabled>
+                <input class="meal-calories" type="number" step=".01" id="meal-calories${uniqueId}" disabled>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
                 <label for="meal-proteins${uniqueId}">Proteins:</label>
-                <input class="meal-proteins" type="number" id="meal-proteins${uniqueId}" disabled>
+                <input class="meal-proteins" type="number" step=".01" id="meal-proteins${uniqueId}" disabled>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
                 <label for="meal-carbs${uniqueId}">Carbs:</label>
-                <input class="meal-carbs" type="number" id="meal-carbs${uniqueId}" disabled>
+                <input class="meal-carbs" type="number" step=".01" id="meal-carbs${uniqueId}" disabled>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
                 <label for="meal-fats${uniqueId}">Fats:</label>
-                <input class="meal-fats" type="number" id="meal-fats${uniqueId}" disabled>
+                <input class="meal-fats" type="number" step=".01" id="meal-fats${uniqueId}" disabled>
             </div>
         </div>
     </div>
@@ -115,19 +111,19 @@ function createFood (food, uniqueIdCounter) {
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
                     <label for="new-food-calories${uniqueId}">Calories:</label>
-                    <input class="form-control new-food-calories" required type="number" id="new-food-calories${uniqueId}" placeholder="In grams, only numbers">
+                    <input class="form-control new-food-calories" required type="number" step=".01" id="new-food-calories${uniqueId}" placeholder="In grams, only numbers">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
                     <label for="new-food-proteins${uniqueId}">Proteins:</label>
-                    <input class="form-control new-food-proteins" required type="number" id="new-food-proteins${uniqueId}" placeholder="In grams, only numbers">
+                    <input class="form-control new-food-proteins" required type="number" step=".01" id="new-food-proteins${uniqueId}" placeholder="In grams, only numbers">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
                     <label for="new-food-carbs${uniqueId}">Carbs:</label>
-                    <input class="form-control new-food-carbs" required type="number" id="new-food-carbs${uniqueId}" placeholder="In grams, only numbers">
+                    <input class="form-control new-food-carbs" required type="number" step=".01" id="new-food-carbs${uniqueId}" placeholder="In grams, only numbers">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
                     <label for="new-food-fats${uniqueId}">Fats:</label>
-                    <input class="form-control new-food-fats" required type="number" id="new-food-fats${uniqueId}" placeholder="In grams, only numbers">
+                    <input class="form-control new-food-fats" required type="number" step=".01" id="new-food-fats${uniqueId}" placeholder="In grams, only numbers">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
                     <label for="new-food-portion${uniqueId}">Portion:</label>
@@ -172,19 +168,19 @@ function finishFood (food, uniqueIdCounter, name, calories, proteins, carbs, fat
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label for="food-calories${uniqueId}">Calories:</label>
-                    <input value="${calories}" class="form-control" disabled type="number" id="food-calories${uniqueId}">
+                    <input value="${calories}" class="form-control" disabled type="number" step=".01" id="food-calories${uniqueId}">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label for="food-proteins${uniqueId}">Proteins:</label>
-                    <input value="${proteins}" class="form-control" disabled type="number" id="food-proteins${uniqueId}">
+                    <input value="${proteins}" class="form-control" disabled type="number" step=".01" id="food-proteins${uniqueId}">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label for="food-carbs${uniqueId}">Carbs:</label>
-                    <input value="${carbs}" class="form-control" disabled type="number" id="food-carbs${uniqueId}">
+                    <input value="${carbs}" class="form-control" disabled type="number" step=".01" id="food-carbs${uniqueId}">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label for="food-fats${uniqueId}">Fats:</label>
-                    <input value="${fats}" class="form-control" disabled type="number" id="food-fats${uniqueId}">
+                    <input value="${fats}" class="form-control" disabled type="number" step=".01" id="food-fats${uniqueId}">
                 </div>
             </div>
         </div>
@@ -192,7 +188,7 @@ function finishFood (food, uniqueIdCounter, name, calories, proteins, carbs, fat
             <div class="row">
                 <div class="col-7 col-lg-12 d-flex align-items-center">
                     <label for="food-quantity${uniqueId}">Quantity:</label>
-                    <input class="form-control" type="number" id="food-quantity${uniqueId}">
+                    <input class="form-control" type="number" step=".01" id="food-quantity${uniqueId}">
                 </div>
                 <button class="delete-food col-5 col-lg-12 btn btn-danger" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -315,22 +311,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-
-
-function saveFoodData() {
-    fetch('foodData.json', {
-        method: 'PUT', // Use the PUT method to update the JSON file
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(foodItems)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Food data updated successfully:', data);
-    })
-    .catch(error => {
-        console.error('Error updating food data:', error);
-    });
-}
