@@ -11,15 +11,9 @@ body {
     font-family: "Montserrat", Arial;
 }
 
-.container-fluid, #meals-list { padding: 0; }
+.container-fluid { padding: 0; }
 
 nav img { width: 50px; }
-
-.navbar-toggler, .navbar-brand, nav .btn-dark { margin-right: 1vw; }
-
-.navbar-brand, .nav-item, nav button { margin-left: 1.5vw }
-
-nav { margin-bottom: 2vw; }
 
 h1 {
     padding-bottom: 0.5vw;
@@ -39,10 +33,6 @@ h1 {
     border: #ffc107 solid 0.5vw;
     border-radius: 3vw;
 }
-
-.meal > :not(:first-child), .foods-list > :not(:first-child) { margin-top: 1.5vw; }
-
-
 
 
 
@@ -70,10 +60,6 @@ h1 {
     text-align: center;
 }
 
-#create-meal > div {
-    display: inline-block; 
-}
-
 #create-meal-tooltip {
     overflow: hidden;
     display: inline-block;
@@ -99,8 +85,6 @@ h1 {
 
 
 
-
-
 input {
     background-color: transparent;
     color: white;
@@ -114,25 +98,7 @@ input {
     margin-right: auto;
 }
 
-#meals-list, .foods-list, .dropdown-toggle, .food-options-dropdown, .create-new-food, .food-item-row .delete-food  { width: 100%; }
-
 .create-new-food > svg, .cancel-new-food > svg { fill: white; }
-
-h2 { margin-top: 2vw; }
-
-.meals > .container-fluid { color: #ffc107; }
-
-.meals > .container-fluid > .row label { font-size: x-large; }
-
-food-options-dropdown a.dropdown-item { font-size: 0.75rem; }
-
-.food-item:hover { color: black; }
-
-.meal-title { color: black; }
-
-.new-food-form label, .food-info-display label, .food-info-interactions label { margin-right: 0.5vw; }
-
-
 
 
 
@@ -171,8 +137,6 @@ footer a > img:hover { transform: scale(1.2); }
 
 
 
-
-
 @media screen and (min-width: 992px) {
     .navbar-brand, .nav-item { transition: 0.3s; }
     .navbar-brand:hover, .nav-item:hover, .navbar-nav > li > .active:hover {
@@ -189,6 +153,10 @@ footer a > img:hover { transform: scale(1.2); }
 
 @media screen and (max-width: 991px) {
     .new-food-buttons .row { justify-content: space-between; }
-    .food-item-row > div, .new-food-form > div > div, .food-info-display > div > div { margin-bottom: 1.5vw; }
+    .new-food-form > div > div, .food-info-display > div > div { margin-bottom: 1.5vw; }
     .new-food-form > div > div { padding: 0; }
+}
+
+@media screen and (max-width: 767px) {
+    .food-dropdown > div:first-child { margin-bottom: 1.5vw; }
 }

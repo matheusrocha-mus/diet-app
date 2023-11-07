@@ -16,32 +16,32 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-dark bg-black navbar-expand-lg">
+        <nav class="navbar navbar-dark navbar-expand-lg bg-black mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand mx-3" href="#">
                     <img src="../img/food-icon.png" alt="food-icon">My Diet
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link active" aria-current="page" href="../img/shrek.png" target="_blank">About</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link active" aria-current="page" href="../img/shrek.png" target="_blank">FAQ</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link active" aria-current="page" href="../img/shrek.png" target="_blank">Join Our Team</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link active" aria-current="page" href="../img/shrek.png" target="_blank">Contact Us</a>
                         </li>
                     </ul>
                     <div class="d-flex">
-                        <button class="btn btn-outline-warning" type="button">Register</button>
-                        <button class="btn btn-dark" type="button">Log in</button>
+                        <button class="btn btn-outline-warning ms-3" type="button">Register</button>
+                        <button class="btn btn-dark mx-3" type="button">Log in</button>
                     </div>
                 </div>
             </div>
@@ -59,30 +59,30 @@
                     <span id="create-meal-tooltip" class="bg-black p-1 rounded">Create meal</span>
                 </button>
             </div>
-            <ul id="meals-list" class="list-group">
+            <ul id="meals-list" class="list-group w-100 p-0">
                 <!--Generated meals will be appended here-->
             </ul>
 
 
 
-            <div id="total" class="container-fluid">
-                <h2>Total:</h2>
+            <div id="total" class="container-fluid mb-4">
+                <h2 class="mt-4">Total:</h2>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <label for="calories">Calories:</label>
-                        <input type="number" id="calories" disabled>
+                    <div class="col-12 col-sm-6 col-md-3 d-flex align-items-center">
+                        <div class="pe-2">Calories:</div>
+                        <div id="calories"></div>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <label for="proteins">Proteins:</label>
-                        <input type="number" id="proteins" disabled>
+                    <div class="col-12 col-sm-6 col-md-3 d-flex align-items-center">
+                        <div class="pe-2">Proteins:</div>
+                        <div id="proteins"></div>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <label for="carbs">Carbs:</label>
-                        <input type="number" id="carbs" disabled>
+                    <div class="col-12 col-sm-6 col-md-3 d-flex align-items-center">
+                        <div class="pe-2">Carbs:</div>
+                        <div id="carbs"></div>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <label for="fats">Fats:</label>
-                        <input type="number" id="fats" disabled>
+                    <div class="col-12 col-sm-6 col-md-3 d-flex align-items-center">
+                        <div class="pe-2">Fats:</div>
+                        <div id="fats"></div>
                     </div>
                 </div>
             </div>
@@ -91,36 +91,36 @@
 
 
         <footer class="bg-black"> <!--CONTEÚDOS DO FOOTER TÃO DANDO OVERFLOW PRA FORA DA PÁGINA-->
-                <h1 class="m-4">Credits</h1>
-                <div class="container-fluid mx-4">
-                    <div class="row">
-                        <div id="about" class="col-sm-12 col-md-6 col-lg-8">
-                            <h5>About</h5>
-                            <p>This project was created by me, a frontend web developer majoring in Software Engineering at Puc Minas Coração Eucarístico, Minas Gerais, Brazil. This personal project came from the frustration of not finding that "perfect" diet app - so I decided to develop one myself, one that suited my specific needs. Anyways, here on the right is my social media so you can learn more about me - go check it out!</p>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <h5>Author</h5>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="../img/author.jpg" id="author" alt="author">
-                                    </div>
-                                    <div class="col-9">
-                                        <p>
-                                            <strong>Student:</strong> Matheus Caetano Rocha<br>
-                                            <strong>Major:</strong> Software Engineering<br>
-                                            <strong>Shift:</strong> Night
-                                        </p>
-                                    </div>
+            <h1 class="m-4">Credits</h1>
+            <div class="container-fluid mx-4">
+                <div class="row">
+                    <div id="about" class="col-sm-12 col-md-6 col-lg-8">
+                        <h5>About</h5>
+                        <p>This project was created by me, a frontend web developer majoring in Software Engineering at Puc Minas Coração Eucarístico, Minas Gerais, Brazil. This personal project came from the frustration of not finding that "perfect" diet app - so I decided to develop one myself, one that suited my specific needs. Anyways, here on the right is my social media so you can learn more about me - go check it out!</p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <h5>Author</h5>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="../img/author.jpg" id="author" alt="author">
+                                </div>
+                                <div class="col-9">
+                                    <p>
+                                        <strong>Student:</strong> Matheus Caetano Rocha<br>
+                                        <strong>Major:</strong> Software Engineering<br>
+                                        <strong>Shift:</strong> Night
+                                    </p>
                                 </div>
                             </div>
-                            <h5 style="display: inline-block;">Social Media:</h5>
-                            <a href="https://github.com/matheusrocha-mus" target="_blank"><img src="../img/github-icon.png" class="social-media-icons" alt="github-icon"></a>
-                            <a href="https://www.linkedin.com/in/matheus-caetanorocha" target="_blank"><img src="../img/linkedin-icon.png" class="social-media-icons" alt="linkedin-icon"></a>
-                            <a href="https://www.instagram.com/matheusrocha_mus" target="_blank"><img src="../img/instagram-icon.png" class="social-media-icons" alt="instagram-icon"></a>
                         </div>
+                        <h5 class="d-inline-block">Social Media:</h5>
+                        <a href="https://github.com/matheusrocha-mus" target="_blank"><img src="../img/github-icon.png" class="social-media-icons" alt="github-icon"></a>
+                        <a href="https://www.linkedin.com/in/matheus-caetanorocha" target="_blank"><img src="../img/linkedin-icon.png" class="social-media-icons" alt="linkedin-icon"></a>
+                        <a href="https://www.instagram.com/matheusrocha_mus" target="_blank"><img src="../img/instagram-icon.png" class="social-media-icons" alt="instagram-icon"></a>
                     </div>
                 </div>
+            </div>
         </footer>
     </body>
 </html>

@@ -1,129 +1,129 @@
 [
     {
-        "name": "Egg",
-        "calories": 72,
-        "proteins": 6.3,
-        "carbs": 0.4,
-        "fats": 4.8,
-        "portion": "1 unit"
+        "foodName": "Egg",
+        "foodCalories": 72,
+        "foodProteins": 6.3,
+        "foodCarbs": 0.4,
+        "foodFats": 4.8,
+        "foodPortion": "1 unit"
     },
     {
-        "name": "Banana",
-        "calories": 105,
-        "proteins": 1.3,
-        "carbs": 27,
-        "fats": 0.4,
-        "portion": "1 unit"
+        "foodName": "Banana",
+        "foodCalories": 105,
+        "foodProteins": 1.3,
+        "foodCarbs": 27,
+        "foodFats": 0.4,
+        "foodPortion": "1 unit"
     },
     {
-        "name": "Rice",
-        "calories": 130,
-        "proteins": 2.7,
-        "carbs": 28.2,
-        "fats": 0.3,
-        "portion": "100 g"
+        "foodName": "Rice",
+        "foodCalories": 130,
+        "foodProteins": 2.7,
+        "foodCarbs": 28.2,
+        "foodFats": 0.3,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Beans",
-        "calories": 128,
-        "proteins": 7.5,
-        "carbs": 24.8,
-        "fats": 0.1,
-        "portion": "100 g"
+        "foodName": "Beans",
+        "foodCalories": 128,
+        "foodProteins": 7.5,
+        "foodCarbs": 24.8,
+        "foodFats": 0.1,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Grilled Chicken",
-        "calories": 144,
-        "proteins": 28,
-        "carbs": 0,
-        "fats": 3.6,
-        "portion": "100 g"
+        "foodName": "Grilled Chicken",
+        "foodCalories": 144,
+        "foodProteins": 28,
+        "foodCarbs": 0,
+        "foodFats": 3.6,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Pork Ribs",
-        "calories": 256,
-        "proteins": 26.81,
-        "carbs": 0,
-        "fats": 15.71,
-        "portion": "100 g"
+        "foodName": "Pork Ribs",
+        "foodCalories": 256,
+        "foodProteins": 26.81,
+        "foodCarbs": 0,
+        "foodFats": 15.71,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Pork Loin",
-        "calories": 201,
-        "proteins": 29.86,
-        "carbs": 0,
-        "fats": 8.11,
-        "portion": "100 g"
+        "foodName": "Pork Loin",
+        "foodCalories": 201,
+        "foodProteins": 29.86,
+        "foodCarbs": 0,
+        "foodFats": 8.11,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Linguiça",
-        "calories": 248,
-        "proteins": 18.27,
-        "carbs": 0,
-        "fats": 18.9,
-        "portion": "100 g"
+        "foodName": "Linguiça",
+        "foodCalories": 248,
+        "foodProteins": 18.27,
+        "foodCarbs": 0,
+        "foodFats": 18.9,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Guava",
-        "calories": 37,
-        "proteins": 1.4,
-        "carbs": 7.88,
-        "fats": 0.52,
-        "portion": "1 unit"
+        "foodName": "Guava",
+        "foodCalories": 37,
+        "foodProteins": 1.4,
+        "foodCarbs": 7.88,
+        "foodFats": 0.52,
+        "foodPortion": "1 unit"
     },
     {
-        "name": "Oat",
-        "calories": 389,
-        "proteins": 16.89,
-        "carbs": 66.27,
-        "fats": 6.9,
-        "portion": "100 g"
+        "foodName": "Oat",
+        "foodCalories": 389,
+        "foodProteins": 16.89,
+        "foodCarbs": 66.27,
+        "foodFats": 6.9,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Peanut Butter",
-        "calories": 588,
-        "proteins": 25.09,
-        "carbs": 19.56,
-        "fats": 50.39,
-        "portion": "100 g"
+        "foodName": "Peanut Butter",
+        "foodCalories": 588,
+        "foodProteins": 25.09,
+        "foodCarbs": 19.56,
+        "foodFats": 50.39,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Raisins",
-        "calories": 299,
-        "proteins": 3.07,
-        "carbs": 79.18,
-        "fats": 0.46,
-        "portion": "100 g"
+        "foodName": "Raisins",
+        "foodCalories": 299,
+        "foodProteins": 3.07,
+        "foodCarbs": 79.18,
+        "foodFats": 0.46,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Whole Milk",
-        "calories": 60,
-        "proteins": 3.22,
-        "carbs": 4.52,
-        "fats": 3.25,
-        "portion": "100 g"
+        "foodName": "Whole Milk",
+        "foodCalories": 60,
+        "foodProteins": 3.22,
+        "foodCarbs": 4.52,
+        "foodFats": 3.25,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Semi-Skimmed Milk",
-        "calories": 0,
-        "carbs": 0,
-        "fats": 0,
-        "portion": "100 g"
+        "foodName": "Semi-Skimmed Milk",
+        "foodCalories": 0,
+        "foodCarbs": 0,
+        "foodFats": 0,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Skimmed Milk",
-        "calories": 0,
-        "proteins": 0,
-        "carbs": 0,
-        "fats": 0,
-        "portion": "100 g"
+        "foodName": "Skimmed Milk",
+        "foodCalories": 0,
+        "foodProteins": 0,
+        "foodCarbs": 0,
+        "foodFats": 0,
+        "foodPortion": "100 g"
     },
     {
-        "name": "Soy Milk",
-        "calories": 54,
-        "proteins": 3.27,
-        "carbs": 6.28,
-        "fats": 1.75,
-        "portion": "100 g"
+        "foodName": "Soy Milk",
+        "foodCalories": 54,
+        "foodProteins": 3.27,
+        "foodCarbs": 6.28,
+        "foodFats": 1.75,
+        "foodPortion": "100 g"
     }
 ]
