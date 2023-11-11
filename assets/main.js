@@ -1,28 +1,6 @@
-/*let foodItems = [];
-
-fetch('foodData.json')
-    .then((response) => response.json())
-    .then((data) => {
-        foodItems = data;
-    })
-    .catch((error) => console.error('Error loading food data:', error));
-
-function saveFoodData() {
-    fetch('foodData.json', {
-        method: 'PUT', // Use the PUT method to update the JSON file
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(foodItems)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Food data updated successfully:', data);
-    })
-    .catch(error => {
-        console.error('Error updating food data:', error);
-    });
-}*/
+/*fetch(`${apiURL}/` + 17,  {
+    method: 'DELETE'
+})*/
 
 const apiURL = 'https://dietapp-server.matheusrocha-mu.repl.co/food';
 
@@ -38,13 +16,9 @@ async function fetchFood() {
 
 let foodItems = [];
 
-fetchFood().then((data) => {
-    foodItems = data;
-});
-
 function createMeal (mealsList) {
     const meal = document.createElement("li");
-    meal.className = "meal sortable list-group-item";
+    meal.className = "meal list-group-item";
     meal.innerHTML = `
     <input type="text" placeholder="Enter meal name" class="meal-title form-control-dark fs-3 text-black">
     <ul class="foods-list list-group w-100 mt-3">
@@ -79,7 +53,7 @@ function createMeal (mealsList) {
 function addFood (foodsList, uniqueIdCounter) {
     const uniqueId = `${uniqueIdCounter}`;
     const food = document.createElement("li");
-    food.className = "food container-fluid list-group-item list-group-item-dark p-4 rounded"; // Avaliar esse nome bosta (duas instâncias abaixo)
+    food.className = "food container-fluid list-group-item list-group-item-dark p-4 rounded";
     food.innerHTML = `
     <div class="food-dropdown row">
         <div class="col-12 col-md-6 col-lg-8">
@@ -185,6 +159,7 @@ function createFood (food, uniqueIdCounter) {
 }
 
 async function submitNewFood (food, newFoodForm, uniqueIdCounter) {
+    const id = foodItems.length + 1;
     const foodName = newFoodForm.querySelector(".new-food-name").value;
     const foodCalories = parseFloat(newFoodForm.querySelector(".new-food-calories").value);
     const foodProteins = parseFloat(newFoodForm.querySelector(".new-food-proteins").value);
@@ -208,6 +183,7 @@ async function submitNewFood (food, newFoodForm, uniqueIdCounter) {
 
     else {
         const requestBody = JSON.stringify({
+            id,
             foodName,
             foodCalories,
             foodProteins,
@@ -215,6 +191,8 @@ async function submitNewFood (food, newFoodForm, uniqueIdCounter) {
             foodFats,
             foodPortion
         });
+
+        console.log(requestBody);
 
         try {
             const response = await fetch(`${apiURL}`, {
@@ -227,6 +205,9 @@ async function submitNewFood (food, newFoodForm, uniqueIdCounter) {
 
             if (response.ok) {
                 console.log('Successfully added new food to database');
+                fetchFood().then((data) => {
+                    foodItems = data;
+                });
             } else {
                 console.error('Error while adding new food:', response.statusText);
             }
@@ -394,6 +375,10 @@ function updateTotal(meals) {
 const meals = [];
 
 document.addEventListener("DOMContentLoaded", () => {
+    fetchFood().then((data) => {
+        foodItems = data;
+    });
+
     const mealsList = document.getElementById("meals-list");
     let uniqueIdCounter = 0;
 
