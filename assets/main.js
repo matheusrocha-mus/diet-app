@@ -24,11 +24,16 @@ function saveFoodData() {
     });
 }*/
 
+const apiURL = 'https://dietapp-server.matheusrocha-mu.repl.co/food';
+
 async function fetchFood() {
-    const response = await fetch('assets/foodData.json');
-    const data = await response.json();
-    localStorage.setItem('foodItems', JSON.stringify(data));
-    return data;
+    try {
+        const response = await fetch(`${apiURL}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching JSON::', error);
+    }
 }
 
 let foodItems = [];
@@ -177,6 +182,62 @@ function createFood (food, uniqueIdCounter) {
     </div>
     `;
     food.appendChild(newFood);
+}
+
+async function submitNewFood (food, newFoodForm, uniqueIdCounter) {
+    const foodName = newFoodForm.querySelector(".new-food-name").value;
+    const foodCalories = parseFloat(newFoodForm.querySelector(".new-food-calories").value);
+    const foodProteins = parseFloat(newFoodForm.querySelector(".new-food-proteins").value);
+    const foodCarbs = parseFloat(newFoodForm.querySelector(".new-food-carbs").value);
+    const foodFats = parseFloat(newFoodForm.querySelector(".new-food-fats").value);
+    const foodPortion = newFoodForm.querySelector(".new-food-portion").value;
+
+    const existingFood = foodItems.find((item) => {
+        const itemName = item.foodName.toLowerCase().replace(/[\s-]/g, '');
+        return itemName === foodName.toLowerCase().replace(/[\s-]/g, '');;
+    });
+
+    if (existingFood) {
+        alert("A food with the same name already exists in the database.");
+
+        const inputFields = newFoodForm.querySelectorAll('input');
+        inputFields.forEach((input) => {
+            input.value = '';
+        });
+    }
+
+    else {
+        const requestBody = JSON.stringify({
+            foodName,
+            foodCalories,
+            foodProteins,
+            foodCarbs,
+            foodFats,
+            foodPortion
+        });
+
+        try {
+            const response = await fetch(`${apiURL}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: requestBody,
+            });
+
+            if (response.ok) {
+                console.log('Successfully added new food to database');
+            } else {
+                console.error('Error while adding new food:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching JSON:', error);
+        }
+
+        food.querySelector(".new-food").remove();
+        finishFood(food, uniqueIdCounter, foodName, foodCalories, foodProteins, foodCarbs, foodFats, foodPortion);
+        uniqueIdCounter++;
+    }
 }
 
 function finishFood (food, uniqueIdCounter, name, calories, proteins, carbs, fats, portion) {
@@ -375,45 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (newFoodForm.checkValidity()) {
                 event.preventDefault();
                 event.stopPropagation();
-
-                const foodName = newFoodForm.querySelector(".new-food-name").value;
-                const foodCalories = parseFloat(newFoodForm.querySelector(".new-food-calories").value);
-                const foodProteins = parseFloat(newFoodForm.querySelector(".new-food-proteins").value);
-                const foodCarbs = parseFloat(newFoodForm.querySelector(".new-food-carbs").value);
-                const foodFats = parseFloat(newFoodForm.querySelector(".new-food-fats").value);
-                const foodPortion = newFoodForm.querySelector(".new-food-portion").value;
-
-                const existingFood = foodItems.find((item) => {
-                    const itemName = item.foodName.toLowerCase().replace(/[\s-]/g, '');
-                    return itemName === foodName.toLowerCase().replace(/[\s-]/g, '');;
-                });
-
-                if (existingFood) {
-                    alert("A food with the same name already exists in the database.");
-
-                    const inputFields = newFoodForm.querySelectorAll('input');
-                    inputFields.forEach((input) => {
-                        input.value = '';
-                    });
-                }
-
-                else {
-                    const newFoodItem = {
-                        foodName,
-                        foodCalories,
-                        foodProteins,
-                        foodCarbs,
-                        foodFats,
-                        foodPortion
-                    };
-
-                    foodItems.push(newFoodItem);
-                    localStorage.setItem('foodItems', JSON.stringify(foodItems));
-
-                    food.querySelector(".new-food").remove();
-                    finishFood(food, uniqueIdCounter, foodName, foodCalories, foodProteins, foodCarbs, foodFats, foodPortion);
-                    uniqueIdCounter++;
-                }
+                submitNewFood(food, newFoodForm, uniqueIdCounter);
 
             } else {
                 event.preventDefault();
