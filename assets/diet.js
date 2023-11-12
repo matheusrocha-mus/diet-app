@@ -4,6 +4,18 @@
 
 const apiURL = 'https://dietapp-server.matheusrocha-mu.repl.co';
 
+async function fetchUser(id) {
+    try {
+        const response = await fetch(`${apiURL}/users/` + id);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching JSON::', error);
+    }
+}
+
+let user = [];
+
 async function fetchFood() {
     try {
         const response = await fetch(`${apiURL}/food`);
@@ -375,6 +387,19 @@ function updateTotal(meals) {
 const meals = [];
 
 document.addEventListener("DOMContentLoaded", () => {
+    const loggedInUserString = localStorage.getItem('loggedInUser');
+
+    if (loggedInUserString) {
+        const loggedInUser = JSON.parse(loggedInUserString);
+        fetchUser(loggedInUser).then((data) => {
+            user = data;
+            document.title = `DietApp - ${user.name}'s Diet`;
+            document.getElementById('diet-title').textContent = `${user.name}'s Diet`;
+        });
+    } else {
+        console.error('No user data found.');
+    }
+
     fetchFood().then((data) => {
         foodItems = data;
     });
