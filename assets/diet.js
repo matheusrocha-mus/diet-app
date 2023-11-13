@@ -1,12 +1,8 @@
-/*fetch(`${apiURL}/food/` + 17,  {
-    method: 'DELETE'
-})*/
-
 const apiURL = 'https://dietapp-server.matheusrocha-mu.repl.co';
 
 async function fetchUser(id) {
     try {
-        const response = await fetch(`${apiURL}/users/` + id);
+        const response = await fetch(`${apiURL}/users/${id}`);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -15,6 +11,49 @@ async function fetchUser(id) {
 }
 
 let user = [];
+
+async function fetchPageState(id) {
+    try {
+        const response = await fetch(`${apiURL}/users/${id}`);
+        const data = await response.json();
+        return data.pageState;
+    } catch (error) {
+        console.error('Error fetching page state:', error);
+    }
+}
+
+let pageState = [];
+
+async function handlePageChange() {
+    try {
+        const loggedInUserString = localStorage.getItem('loggedInUser');
+
+        if (loggedInUserString) {
+            const userId = JSON.parse(loggedInUserString);
+
+            const mealsList = document.getElementById('meals-list');
+            const pageState = btoa(mealsList.innerHTML.replace(/\s{2,}/g, ' '));
+
+            const response = await fetch(`${apiURL}/users/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ pageState }),
+            });
+
+            if (response.ok) {
+                console.log('Successfully updated page state in the database');
+            } else {
+                console.error('Error while updating page state:', response.statusText);
+            }
+        } else {
+            console.error('No logged-in user data found.');
+        }
+    } catch (error) {
+        console.error('Error during page change event:', error);
+    }
+}
 
 async function fetchFood() {
     try {
@@ -204,8 +243,6 @@ async function submitNewFood (food, newFoodForm, uniqueIdCounter) {
             foodPortion
         });
 
-        console.log(requestBody);
-
         try {
             const response = await fetch(`${apiURL}/food`, {
                 method: 'POST',
@@ -387,14 +424,20 @@ function updateTotal(meals) {
 const meals = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-    const loggedInUserString = localStorage.getItem('loggedInUser');
+    const mealsList = document.getElementById("meals-list");
 
-    if (loggedInUserString) {
-        const loggedInUser = JSON.parse(loggedInUserString);
-        fetchUser(loggedInUser).then((data) => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+        const userId = parseInt(loggedInUser, 10);
+        fetchUser(userId).then((data) => {
             user = data;
             document.title = `DietApp - ${user.name}'s Diet`;
             document.getElementById('diet-title').textContent = `${user.name}'s Diet`;
+        });
+
+        fetchPageState(userId).then((data) => {
+            pageState = atob(data);
+            mealsList.innerHTML = pageState;
         });
     } else {
         console.error('No user data found.');
@@ -404,7 +447,6 @@ document.addEventListener("DOMContentLoaded", () => {
         foodItems = data;
     });
 
-    const mealsList = document.getElementById("meals-list");
     let uniqueIdCounter = 0;
 
     document.getElementById("create-meal-button").addEventListener("click", () => {
@@ -480,4 +522,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+});
+
+window.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+        handlePageChange();
+    }
+});
+
+window.addEventListener("beforeunload", () => {
+    handlePageChange();
 });
