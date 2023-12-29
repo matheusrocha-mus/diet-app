@@ -151,7 +151,7 @@ function addFood (foodsList, uniqueFoodIdCounter) {
     });
 }
 
-function createFood (food, uniqueIdCounter) {
+function createFood (food, uniqueFoodIdCounter) {
     const newFood = document.createElement("form");
     newFood.className = "new-food container-fluid needs-validation";
     newFood.setAttribute("novalidate", "");
@@ -160,28 +160,28 @@ function createFood (food, uniqueIdCounter) {
         <div class="new-food-form col-12 col-lg-10">
             <div class="row">
                 <div class="col-12 col-lg-4 d-flex align-items-center">
-                    <label class="me-2" for="new-food-name${uniqueIdCounter}">Name:</label>
-                    <input class="form-control new-food-name" required type="text" id="new-food-name${uniqueIdCounter}" placeholder="Food name">
+                    <label class="me-2" for="new-food-name${uniqueFoodIdCounter}">Name:</label>
+                    <input class="form-control new-food-name" required type="text" id="new-food-name${uniqueFoodIdCounter}" placeholder="Food name">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
-                    <label class="me-2" for="new-food-calories${uniqueIdCounter}">Calories:</label>
-                    <input class="form-control new-food-calories" required type="number" step=".01" id="new-food-calories${uniqueIdCounter}" placeholder="In grams, only numbers">
+                    <label class="me-2" for="new-food-calories${uniqueFoodIdCounter}">Calories:</label>
+                    <input class="form-control new-food-calories" required type="number" step=".01" id="new-food-calories${uniqueFoodIdCounter}" placeholder="In grams, only numbers">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
-                    <label class="me-2" for="new-food-proteins${uniqueIdCounter}">Proteins:</label>
-                    <input class="form-control new-food-proteins" required type="number" step=".01" id="new-food-proteins${uniqueIdCounter}" placeholder="In grams, only numbers">
+                    <label class="me-2" for="new-food-proteins${uniqueFoodIdCounter}">Proteins:</label>
+                    <input class="form-control new-food-proteins" required type="number" step=".01" id="new-food-proteins${uniqueFoodIdCounter}" placeholder="In grams, only numbers">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
-                    <label for="new-food-carbs${uniqueIdCounter}">Carbs:</label>
-                    <input class="form-control new-food-carbs" required type="number" step=".01" id="new-food-carbs${uniqueIdCounter}" placeholder="In grams, only numbers">
+                    <label for="new-food-carbs${uniqueFoodIdCounter}">Carbs:</label>
+                    <input class="form-control new-food-carbs" required type="number" step=".01" id="new-food-carbs${uniqueFoodIdCounter}" placeholder="In grams, only numbers">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
-                    <label class="me-2" for="new-food-fats${uniqueIdCounter}">Fats:</label>
-                    <input class="form-control new-food-fats" required type="number" step=".01" id="new-food-fats${uniqueIdCounter}" placeholder="In grams, only numbers">
+                    <label class="me-2" for="new-food-fats${uniqueFoodIdCounter}">Fats:</label>
+                    <input class="form-control new-food-fats" required type="number" step=".01" id="new-food-fats${uniqueFoodIdCounter}" placeholder="In grams, only numbers">
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center">
-                    <label class="me-2" for="new-food-portion${uniqueIdCounter}">Portion:</label>
-                    <select class="form-select new-food-portion" required id="new-food-portion${uniqueIdCounter}">
+                    <label class="me-2" for="new-food-portion${uniqueFoodIdCounter}">Portion:</label>
+                    <select class="form-select new-food-portion" required id="new-food-portion${uniqueFoodIdCounter}">
                         <option selected disabled>Select portion type</option>
                         <option value="1 unit">1 unit</option>
                         <option value="100 g">100 g</option>
@@ -245,9 +245,7 @@ async function submitNewFood (food, newFoodForm, uniqueFoodIdCounter) {
         try {
             const response = await fetch(`${apiURL}/food`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json', },
                 body: requestBody,
             });
 
@@ -303,15 +301,15 @@ function finishFood (food, uniqueFoodIdCounter, foodData) {
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label class="me-2" for="food-proteins${uniqueFoodIdCounter}">Proteins:</label>
-                    <input value="${foodData.proteins}" class="food-info-proteins form-control" disabled type="number" step=".01" id="food-proteins${uniqueFoodIdCounter}">
+                    <input value="${foodData.proteins}" class="food-info-proteins form-control" disabled type="text" step=".01" id="food-proteins${uniqueFoodIdCounter}">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label class="me-2" for="food-carbs${uniqueFoodIdCounter}">Carbs:</label>
-                    <input value="${foodData.carbs}" class="food-info-carbs form-control" disabled type="number" step=".01" id="food-carbs${uniqueFoodIdCounter}">
+                    <input value="${foodData.carbs}" class="food-info-carbs form-control" disabled type="text" step=".01" id="food-carbs${uniqueFoodIdCounter}">
                 </div>
                 <div class="col-6 col-lg-4 d-flex align-items-center">
                     <label class="me-2" for="food-fats${uniqueFoodIdCounter}">Fats:</label>
-                    <input value="${foodData.fats}" class="food-info-fats form-control" disabled type="number" step=".01" id="food-fats${uniqueFoodIdCounter}">
+                    <input value="${foodData.fats}" class="food-info-fats form-control" disabled type="text" step=".01" id="food-fats${uniqueFoodIdCounter}">
                 </div>
             </div>
         </div>
@@ -403,10 +401,14 @@ function updateMealTotal(meal) {
         totalMealFats += mealFats;
     });
 
-    mealTotalCalories.textContent = totalMealCalories.toFixed(2);
-    mealTotalProteins.textContent = totalMealProteins.toFixed(2);
-    mealTotalCarbs.textContent = totalMealCarbs.toFixed(2);
-    mealTotalFats.textContent = totalMealFats.toFixed(2);
+    const proteinsPercentage = ((totalMealProteins * 4 * 100) / totalMealCalories).toFixed(2);
+    const carbsPercentage = ((totalMealCarbs * 4 * 100) / totalMealCalories).toFixed(2);
+    const fatsPercentage = ((totalMealFats * 9 * 100) / totalMealCalories).toFixed(2);
+
+    mealTotalCalories.textContent = `${totalMealCalories.toFixed(2)}kcal`;
+    mealTotalProteins.textContent = `${totalMealProteins.toFixed(2)}g (${proteinsPercentage}%)`;
+    mealTotalCarbs.textContent = `${totalMealCarbs.toFixed(2)}g (${carbsPercentage}%)`;
+    mealTotalFats.textContent = `${totalMealFats.toFixed(2)}g (${fatsPercentage}%)`;
 
     updateTotal(meals);
 }
@@ -414,6 +416,11 @@ function updateMealTotal(meal) {
 const meals = [];
 
 function updateTotal(meals) {
+    const calories = document.getElementById("calories");
+    const proteins = document.getElementById("proteins");
+    const carbs = document.getElementById("carbs");
+    const fats = document.getElementById("fats");
+
     let totalCalories = 0;
     let totalProteins = 0;
     let totalCarbs = 0;
@@ -426,15 +433,10 @@ function updateTotal(meals) {
         totalFats += parseFloat(meal.querySelector(".meal-fats").textContent) || 0;
     });
 
-    const calories = document.getElementById("calories");
-    const proteins = document.getElementById("proteins");
-    const carbs = document.getElementById("carbs");
-    const fats = document.getElementById("fats");
-
-    calories.textContent = totalCalories.toFixed(2);
-    proteins.textContent = totalProteins.toFixed(2);
-    carbs.textContent = totalCarbs.toFixed(2);
-    fats.textContent = totalFats.toFixed(2);
+    calories.textContent = `${totalCalories.toFixed(2)}kcal`;
+    proteins.textContent = `${totalProteins.toFixed(2)}g (${((totalProteins * 4 * 100) / totalCalories).toFixed(2)}%)`;
+    carbs.textContent = `${totalCarbs.toFixed(2)}g (${((totalCarbs * 4 * 100) / totalCalories).toFixed(2)}%)`;
+    fats.textContent = `${totalFats.toFixed(2)}g (${((totalFats * 9 * 100) / totalCalories).toFixed(2)}%)`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -493,71 +495,69 @@ document.addEventListener("DOMContentLoaded", () => {
             const mealId = event.target.closest(".meal").id.replace('meal','');
             const mealInput = event.target.closest(".meal").querySelector(".meal-title");
             const mealName = mealInput.value.trim();
-            const foodsNames = Array.from(event.target.closest(".meal").querySelectorAll(".edit-food:not(.d-none) .food-name")).map(food => food.value.trim());
+            const foodsIDs = Array.from(event.target.closest(".meal").querySelectorAll(".food-info-name")).map(food => food.value.trim());
+            const foodsQuantities = Array.from(event.target.closest(".meal").querySelectorAll(".food-info-quantity")).map(food => food.value.trim());
 
             if (!mealName) {
                 alert("You must at least enter a meal name before saving it to the database.");
                 mealInput.style.border = "1px solid red";
             } else {
-                if (foodsNames.length < 1) {
+                if (foodsIDs.length < 1 || foodsQuantities.length < 1) {
                     alert("You must have at least one food in the meal before saving it to the database.");
                 } else {
-                    fetchMeals().then((mealsData) => {
-                        let mealFound = false;
-                        for (let meal of mealsData) {
-                            if (meal.id == mealId) {
-                                mealFound = true;
+                    let mealFound = false;
+                    for (let meal of userMeals) {
+                        if (meal.id == mealId) {
+                            mealFound = true;
 
-                                const updatedMeal = {
-                                    foods: foodsNames,
-                                    name: mealName,
-                                    id: mealId
-                                };
-
-                                fetch(`${apiURL}/users/${id}/meals/${mealId}`, {
-                                    method: 'PUT',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify(updatedMeal),
-                                })
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error(`HTTP error! Status: ${response.status}`);
-                                    }
-                                    console.log("Meal updated successfully!");
-                                })
-                                .catch(error => {
-                                    console.error("Error updating meal:", error);
-                                });
-
-                                break;
-                            }
-                        }
-                        if (!mealFound) {
-                            const newMeal = {
-                                foods: foodsNames,
-                                name: mealName
+                            const updatedMeal = {
+                                foods: foodsIDs.map((id, index) => ({
+                                    quantity: foodsQuantities[index],
+                                    id
+                                })),
+                                name: mealName,
+                                id: mealId
                             };
 
-                            fetch(`${apiURL}/meals`, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(newMeal),
+                            fetch(`${apiURL}/users/${id}`, { // Isso não vai funcionar - vai sobrescrever a key `meals` inteira
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json', },
+                                body: JSON.stringify({ meals: [updatedMeal] }),
                             })
                             .then(response => {
                                 if (!response.ok) {
                                     throw new Error(`HTTP error! Status: ${response.status}`);
                                 }
-                                console.log("Meal created successfully!");
+                                console.log("Meal updated successfully!");
                             })
                             .catch(error => {
-                                console.error("Error creating meal:", error);
+                                console.error("Error updating meal:", error);
                             });
+
+                            break;
                         }
-                    });
+                    }
+                    if (!mealFound) {
+                        const newMeal = {
+                            foods: foodsNames,
+                            name: mealName
+                        };
+
+                        fetch(`${apiURL}/meals`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', },
+                            body: JSON.stringify(newMeal),
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            }
+                            console.log("Meal created successfully!");
+                        })
+                        .catch(error => {
+                            console.error("Error creating meal:", error);
+                        });
+                    }
                 }
             }
         }
@@ -577,8 +577,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             else {
-                createFood (food, uniqueIdCounter);
-                uniqueIdCounter++;
+                createFood (food, uniqueFoodIdCounter);
+                uniqueFoodIdCounter++;
             }
         }
 
@@ -589,7 +589,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (newFoodForm.checkValidity()) {
                 event.preventDefault();
                 event.stopPropagation();
-                submitNewFood(food, newFoodForm, uniqueIdCounter);
+                submitNewFood(food, newFoodForm, uniqueFoodIdCounter);
 
             } else {
                 event.preventDefault();
